@@ -48,16 +48,30 @@ def move_left():
     x = player.xcor()
     x -= playerspeed
     if x < -280:
-        x = - 280
-    player.setx(x)
-    
+        x = - 280  
+  
 def move_right():
     x = player.xcor()
     x += playerspeed
     if x > 280:
         x = 280 
     player.setx(x)
+
+#Move the player up and down 
+
+def move_up():
+    y = player.ycor()
+    y += playerspeed
+    if y > 300:
+        y = 300
+    player.setx(x)    
     
+def move_down():
+    y = player.ycor()
+    y -= playerspeed
+    if y < 300:
+        y = 300
+    player.sety(y)        
     
 #Create keyboard bindings 
 turtle.listen()
@@ -73,15 +87,26 @@ while True:
     enemy.setx(x)
     
     #Move the enemy back and down
-    if enemy.xcor() > 280:
+    
+    #Move the enemy back
+    
+    if enemy.ycor() > 280:
         y = enemy.ycor()
         y -= 40
         enemyspeed *= -1
         enemy.set(y)
+   
+   # Move the enemy to the right  
+     
+     elif enemy.xcor() > 300
+        x = enemy.xcor()
+        x -= 100
+        enemy speed *= 1
+        enemy.set(x)
         
-       
+    #Move the enemy down   
         
-    if enemy.xcor() < -280:
+    if enemy.ycor() < -280:
         y = enemy.ycor()
         y -= 40
         enemyspeed *= -1
