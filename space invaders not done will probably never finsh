@@ -78,6 +78,7 @@ while True:
         y -= 40
         enemyspeed *= -1
         enemy.set(y)
+        
        
         
     if enemy.xcor() < -280:
