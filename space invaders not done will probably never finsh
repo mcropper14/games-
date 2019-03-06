@@ -41,7 +41,22 @@ enemy.speed(0)
 enemy.setposition(-200, 250)
 
 enemyspeed = 2
+#Create the player's bullet
+bullet = turtle.Turtle()
+bullet.color("yellow")
+bullet.shape("triangle")
+bullet.penup()
+bullet.speed(0)
+bullet.setheading(90)
+bullet.shapesize(0.5, 0.5)
+bullet.hideturtle()
 
+bulletspeed = 20
+
+#Define bullet state
+#ready - ready to fire
+#fire - bullet is firing 
+bulletstate = "ready"
 
 #Move the player left and right
 def move_left():
@@ -56,22 +71,11 @@ def move_right():
     if x > 280:
         x = 280 
     player.setx(x)
-
-#Move the player up and down 
-
-def move_up():
-    y = player.ycor()
-    y += playerspeed
-    if y > 300:
-        y = 300
-    player.setx(x)    
     
-def move_down():
-    y = player.ycor()
-    y -= playerspeed
-    if y < 300:
-        y = 300
-    player.sety(y)        
+def fire_bullet()
+    #Decladefre bulletstate as a global if it needs to be changed 
+    global bulletstate
+
     
 #Create keyboard bindings 
 turtle.listen()
@@ -95,14 +99,6 @@ while True:
         y -= 40
         enemyspeed *= -1
         enemy.set(y)
-   
-   # Move the enemy to the right  
-     
-     elif enemy.xcor() > 300
-        x = enemy.xcor()
-        x -= 100
-        enemy speed *= 1
-        enemy.set(x)
         
     #Move the enemy down   
         
