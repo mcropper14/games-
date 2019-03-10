@@ -81,6 +81,7 @@ def move_left():
     x -= playerspeed
     if x < -280:
         x = - 280  
+    player.setx(x)    
   
 def move_right():
     x = player.xcor()
@@ -124,31 +125,36 @@ while True:
     
         #Move the enemy back and down
     
-        if enemy.ycor() > 280:
-            y = enemy.xcor()
-            y -= 40
-            enemyspeed *= -1
-            enemy.set(y)
-        
-        #Move the enemy down   
+        if enemy.xcor() > 280:
+            #Move all enemies down 
+            for e in enemies:
+                y = e.ycor()
+                y -= 40
+                e.sety(y)
+            #Change enemy direction     
+            enemyspeed *= -1 
         
         if enemy.xcor() < -280:
-            y = enemy.ycor()
-            y -= 40
-            enemyspeed *= -1
-            enemy.sety(y)'
+            #Move all enemies down 
+            for e in enemies:
+                y = e.ycor()
+                y -= 40
+                e.sety(y)
+             #Change enemy direction   
+             enemyspeed *= -1
  
      # Check for a collision between the bullet and the enemy
-          if isCollision(bullet, enemy):
-              #Reset the bullet
-              bulletstate = "ready"
-              bullet.setposition(0, -400)
-              #Reset the enemy
-              x = random.randint(-200, 200)
-              y = random.randint(100, 250)
-              enemy.setposition(x, y)
+        if isCollision(bullet, enemy):
+            #Reset the bullet
+            bullet.hideturtle()
+            bulletstate = "ready"
+            bullet.setposition(0, -400)
+            #Reset the enemy
+            x = random.randint(-200, 200)
+            y = random.randint(100, 250)
+            enemy.setposition(x, y)
               
-              enemy.setposition(-200, 250)
+            enemy.setposition(-200, 250)
      
          if isCollision(player, enemy):
              player.hideturtle()
