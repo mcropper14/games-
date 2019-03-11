@@ -4,16 +4,17 @@ import turtle
 import os 
 import math 
 import random
+import keyboard 
 
 # set up the screen 
-wn = turrtle.Screen()
+wn = turtle.Screen()
 wn.bgcolor("black")
 wn.title("Space Invaders")
 
 #Draw border 
 border_pen = turtle.Turtle()
 border_pen.speed(0)
-border_pen.color("white)
+border_pen.color("white")
 border_pen.penup()
 border_pen.setposition(-300,-300)
 border_pen.pendown()
@@ -39,7 +40,7 @@ score_pen.hideturtle()
 #Create the player turtle
 player = turtle.Turtle()
 player.color("blue")
-player.shape("trinagle")
+player.shape("triangle")
 player.penup()
 player.speed(0)
 player.setposition(0, -250)
@@ -51,6 +52,7 @@ playerspeed = 15
 
 #Choose a number of enemies
 number_of_enemies = 5 
+enemy = turtle.Turtle()
 #Create an empty list of enemies 
 enemies = []
 
@@ -60,13 +62,14 @@ for i in range(number_of_enemies):
     enemies.append(turtle.Turtle())
    
 for enemy in enemies:
-    enemy.color("red")
-    enemy.shape("circle")
-    enemy.penup()
-    enemy.speed(0)
-    x = random.randint(-200, 200)
-    y = random.randint(100, 250)
-    enemy.setposition(x, y)
+enemy = turtle.Turtle
+enemy.color("red")
+enemy.shape("circle")
+enemy.penup()
+enemy.speed(0)
+x = random.randint(-200, 200)
+y = random.randint(100, 250)
+enemy.setposition(x, y)
 
 enemyspeed = 2
     
@@ -90,6 +93,7 @@ bulletstate = "ready"
 
 #Move the player left and right
 def move_left():
+move_left = turtle.Turtle() 
     x = player.xcor()
     x -= playerspeed
     if x < -280:
@@ -97,6 +101,7 @@ def move_left():
     player.setx(x)    
   
 def move_right():
+move_right = turtle.Turtle() 
     x = player.xcor()
     x += playerspeed
     if x > 280:
@@ -104,18 +109,19 @@ def move_right():
     player.setx(x)
     
 def fire_bullet()
-    #Declare bulletstate as a global if it needs to be changed 
-    global bulletstate
-    if bulletstate == "ready":
-        bulletstate = "fire"
-        #Move the bullet to adjust to be above the player
-        x = player.xcor()
-        y = player.ycor() + 10
-        bullet.setposition(x, y)
-        bullet.showturtle()
+#Declare bulletstate as a global if it needs to be changed 
+global bulletstate
+global_bulletstate = turtle.Turtle()
+if bulletstate == "ready":
+bulletstate = "fire"
+#Move the bullet to adjust to be above the player
+    x = player.xcor()
+    y = player.ycor() + 10
+    bullet.setposition(x, y)
+    bullet.showturtle()
     
 def isCollision(t1, t2):
-    distance = math.sqrt(math.pow(t1.xcor()-t2.xcor(),2)+math.pow(t1.ycor()-t2.ycor(),2))
+distance = math.sqrt(math.pow(t1.xcor()-t2.xcor(),2)+math.pow(t1.ycor()-t2.ycor(),2))
     if distance < 15:
         return True 
     else:
@@ -130,24 +136,24 @@ turtle.onkey(fire_bullet, "space")
 #Main game loop
 while True:
 
-    for enemy in enemies:
-        #Move the enemy
-        x = enemy.xcor()
-        x += enemyspeed
-        enemy.setx(x)
+for enemy in enemies:
+    #Move the enemy
+    x = enemy.xcor()
+    x += enemyspeed
+    enemy.setx(x)
     
-        #Move the enemy back and down
+    #Move the enemy back and down
     
-        if enemy.xcor() > 280:
-            #Move all enemies down 
-            for e in enemies:
-                y = e.ycor()
-                y -= 40
-                e.sety(y)
-            #Change enemy direction     
-            enemyspeed *= -1 
+if enemy.xcor() > 280:
+#Move all enemies down 
+for e in enemies:
+    y = e.ycor()
+    y -= 40
+    e.sety(y)
+#Change enemy direction     
+enemyspeed *= -1 
         
-        if enemy.xcor() < -280:
+if enemy.xcor() < -280:
             #Move all enemies down 
             for e in enemies:
                 y = e.ycor()
@@ -168,7 +174,7 @@ while True:
             enemy.setposition(x, y)
             #Update the score
             score += 10 
-            scorestring = "Score: %s" %score
+            scorestring = "Score: %s" 
             score_pen.clear()
             score_pen.write(scorestring, False, align="left", font=("Arial", 14, "normal"))
          
@@ -188,8 +194,8 @@ while True:
      
      #Check to see if bullet has gone to the top 
      if bullet.ycor() > 275:
-         bullet.hideturtle()
-         bulletstate = "ready"
+     bullet.hideturtle()
+     bulletstate = "ready"
          
     
      
