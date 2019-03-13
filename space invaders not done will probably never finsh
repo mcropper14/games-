@@ -21,7 +21,6 @@ border_pen.pensize(3)
 for side in range(4):
     border_pen.fd(600)
     border_pen.lt(90)
-border_pen.hideturtle()
 
 #Set the score to 0
 score = 0
