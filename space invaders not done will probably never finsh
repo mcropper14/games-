@@ -4,6 +4,7 @@ import turtle
 import os 
 import math 
 import random
+import keyboard
 
 # set up the screen 
 wn = turtle.Screen()
@@ -31,7 +32,7 @@ score_pen.speed(0)
 score_pen.color("white")
 score_pen.penup()
 score_pen.setposition(-290, 280)
-scorestring = "Score: %s" %score
+scorestring = "Score: %s" 
 score_pen.write(scorestring, False, align="left", font=("Arial", 14, "normal"))
 score_pen.hideturtle.Turtle()
 
